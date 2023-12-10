@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk5kxmtdwjbl7"]
+[gd_scene load_steps=10 format=3 uid="uid://bk5kxmtdwjbl7"]
 
 [ext_resource type="PackedScene" uid="uid://btq1pgruvhfus" path="res://Player/player.tscn" id="1_876en"]
 [ext_resource type="PackedScene" uid="uid://crbcwmapyywn8" path="res://Terrain/terrain.tscn" id="1_lpeyv"]
 [ext_resource type="PackedScene" uid="uid://bp2u2ioju83qv" path="res://Terrain/maze.tscn" id="3_jn2dh"]
 [ext_resource type="Script" path="res://Terrain/Sculpture.gd" id="4_hgxqq"]
+[ext_resource type="PackedScene" uid="uid://s4yyfh2ywncr" path="res://Enemy/NPC.tscn" id="5_q8yxn"]
+[ext_resource type="PackedScene" uid="uid://gdtm4b7i8wug" path="res://Enemy/Agent.tscn" id="6_t7l1k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g8tty"]
 
@@ -41,3 +43,9 @@ script = ExtResource("4_hgxqq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.555495, 0.435641, 0.515907)
 operation = 2
 radius = 0.699053
+
+[node name="NPC" parent="." instance=ExtResource("5_q8yxn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.648, 0, 20.364)
+
+[node name="Agent" parent="." instance=ExtResource("6_t7l1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.92, 0, 1.479)
