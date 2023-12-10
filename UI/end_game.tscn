@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://draodnce2sqb0"]
+
+[ext_resource type="Script" path="res://UI/end_game.gd" id="1_2g6v4"]
+[ext_resource type="FontFile" uid="uid://dxjkiyn4ew671" path="res://Assets/LeagueGothic-Regular.otf" id="2_vmcqs"]
+[ext_resource type="PackedScene" uid="uid://cvbmtp5ydv38n" path="res://Assets/lowpoly_scene.dae" id="3_p6soy"]
+
+[node name="end_game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2g6v4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 100.0
+offset_right = 704.0
+offset_bottom = 194.0
+theme_override_fonts/font = ExtResource("2_vmcqs")
+theme_override_font_sizes/font_size = 75
+text = "GAME OVER"
+
+[node name="main_menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 300.0
+offset_right = 738.0
+offset_bottom = 377.0
+theme_override_font_sizes/font_size = 50
+text = "PLAY AGAIN"
+
+[node name="lowpoly_scene" parent="." instance=ExtResource("3_p6soy")]
+
+[connection signal="pressed" from="main_menu" to="." method="_on_main_menu_pressed"]

@@ -42,3 +42,4 @@ func damage():
 	dying = true
 	$AnimationPlayer.play("Death")
 	velocity = Vector3.ZERO
+	$Root.hide()

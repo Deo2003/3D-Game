@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bk5kxmtdwjbl7"]
+[gd_scene load_steps=14 format=3 uid="uid://bk5kxmtdwjbl7"]
 
 [ext_resource type="PackedScene" uid="uid://btq1pgruvhfus" path="res://Player/player.tscn" id="1_876en"]
 [ext_resource type="PackedScene" uid="uid://crbcwmapyywn8" path="res://Terrain/terrain.tscn" id="1_lpeyv"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://Terrain/Sculpture.gd" id="4_hgxqq"]
 [ext_resource type="PackedScene" uid="uid://s4yyfh2ywncr" path="res://Enemy/NPC.tscn" id="5_koiuc"]
 [ext_resource type="PackedScene" uid="uid://gdtm4b7i8wug" path="res://Enemy/Agent.tscn" id="6_nril3"]
+[ext_resource type="Script" path="res://UI/pause_menu.gd" id="7_8hev4"]
+[ext_resource type="FontFile" uid="uid://dxjkiyn4ew671" path="res://Assets/LeagueGothic-Regular.otf" id="8_j6uxh"]
+[ext_resource type="AudioStream" uid="uid://bi513hh3dp5nv" path="res://Assets/Labyrinth-of-Lost-Dreams-MP3(chosic.com).mp3" id="9_na2lp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g8tty"]
 
@@ -58,8 +61,70 @@ radius = 0.699053
 [node name="NPC" parent="." instance=ExtResource("5_koiuc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.64788, 0, 20.3642)
 
-[node name="Agent" parent="." instance=ExtResource("6_nril3")]
+[node name="Zombie1" parent="." instance=ExtResource("6_nril3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9267, 0, 1.47921)
+
+[node name="Zombie2" parent="." instance=ExtResource("6_nril3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 13)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.213576, 0.976926, 0, -0.976926, 0.213576, 0, 14.5852, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="pause_menu" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_8hev4")
+
+[node name="ColorRect" type="ColorRect" parent="UI/pause_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1112.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.196078, 0.196078, 0.694118)
+
+[node name="Label" type="Label" parent="UI/pause_menu"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 100.0
+offset_right = 658.0
+offset_bottom = 194.0
+theme_override_fonts/font = ExtResource("8_j6uxh")
+theme_override_font_sizes/font_size = 75
+text = "PAUSED"
+
+[node name="Restart" type="Button" parent="UI/pause_menu"]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 250.0
+offset_right = 691.0
+offset_bottom = 327.0
+theme_override_font_sizes/font_size = 50
+text = "RESTART"
+
+[node name="Quit" type="Button" parent="UI/pause_menu"]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 350.0
+offset_right = 652.0
+offset_bottom = 427.0
+theme_override_font_sizes/font_size = 50
+text = "QUIT
+"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_na2lp")
+autoplay = true
+
+[connection signal="pressed" from="UI/pause_menu/Restart" to="UI/pause_menu" method="_on_restart_pressed"]
+[connection signal="pressed" from="UI/pause_menu/Quit" to="UI/pause_menu" method="_on_quit_pressed"]

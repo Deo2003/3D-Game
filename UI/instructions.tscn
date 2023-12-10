@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://7224ue76lfva"]
+
+[ext_resource type="Script" path="res://UI/instructions.gd" id="1_8vg50"]
+[ext_resource type="FontFile" uid="uid://dxjkiyn4ew671" path="res://Assets/LeagueGothic-Regular.otf" id="2_y735m"]
+[ext_resource type="PackedScene" uid="uid://cvbmtp5ydv38n" path="res://Assets/lowpoly_scene.dae" id="3_ttdgj"]
+[ext_resource type="AudioStream" uid="uid://buasbrf38gra3" path="res://Assets/Hitman(chosic.com).mp3" id="4_kmag0"]
+
+[node name="instructions" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8vg50")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 100.0
+offset_right = 720.0
+offset_bottom = 194.0
+theme_override_fonts/font = ExtResource("2_y735m")
+theme_override_font_sizes/font_size = 75
+text = "HOW TO PLAY"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 200.0
+offset_right = 1019.0
+offset_bottom = 488.0
+theme_override_font_sizes/font_size = 50
+text = "Move ----------------- WASD
+Shoot ---------------- Left Mouse Click
+Jump ----------------- Space
+Pause --------------- ESC"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 500.0
+offset_right = 688.0
+offset_bottom = 577.0
+theme_override_font_sizes/font_size = 50
+text = "BACK"
+
+[node name="lowpoly_scene" parent="." instance=ExtResource("3_ttdgj")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kmag0")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

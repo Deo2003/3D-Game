@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3vs8u3fw5ls3"]
+
+[ext_resource type="FontFile" uid="uid://dxjkiyn4ew671" path="res://Assets/LeagueGothic-Regular.otf" id="1_ihnga"]
+[ext_resource type="PackedScene" uid="uid://cvbmtp5ydv38n" path="res://Assets/lowpoly_scene.dae" id="2_71qih"]
+
+[sub_resource type="GDScript" id="GDScript_hbwc2"]
+script/source = "extends Control
+
+
+func _on_resume_pressed():
+	Global.reset()
+	get_tree().change_scene_to_file(\"res://game.tscn\")
+
+
+func _on_quit_pressed():
+	get_tree().quit()
+"
+
+[node name="pause" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_hbwc2")
+
+[node name="GameName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 400.0
+offset_top = 100.0
+offset_right = 800.0
+offset_bottom = 250.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_ihnga")
+theme_override_font_sizes/font_size = 75
+text = "Dead Men Walking"
+
+[node name="Restart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 250.0
+offset_right = 706.0
+offset_bottom = 327.0
+theme_override_font_sizes/font_size = 50
+text = "RESTART"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+offset_left = 540.0
+offset_top = 350.0
+offset_right = 667.0
+offset_bottom = 427.0
+theme_override_font_sizes/font_size = 50
+text = "QUIT"
+
+[node name="lowpoly_scene" parent="." instance=ExtResource("2_71qih")]
+
+[connection signal="pressed" from="Restart" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
