@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://gdtm4b7i8wug"]
 
-[ext_resource type="Texture2D" uid="uid://bbeo8imoc75ik" path="res://Assets/zombieA.png" id="1_fiyvx"]
+[ext_resource type="Texture2D" uid="uid://c7ag7dxcabefl" path="res://Assets/zombieA.png" id="1_fiyvx"]
 [ext_resource type="Script" path="res://Enemy/Agent.gd" id="1_yf47a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_riley"]

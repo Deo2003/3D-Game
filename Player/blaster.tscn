@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxw76t2k8o24j"]
+[gd_scene load_steps=12 format=3 uid="uid://bxw76t2k8o24j"]
 
 [ext_resource type="Script" path="res://Player/blaster.gd" id="1_c3vu4"]
 [ext_resource type="ArrayMesh" uid="uid://3ldr37dgccmv" path="res://Assets/muzzleflash.obj" id="2_1su5m"]
 [ext_resource type="Material" uid="uid://p1jaa6pr2ytx" path="res://Assets/muzzle.tres" id="3_wfxwu"]
+[ext_resource type="Texture2D" uid="uid://bwypd708bany0" path="res://Assets/crosshair_white_small.png" id="4_noau5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eim8e"]
 resource_name = "yellow"
@@ -143,26 +144,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cuvia")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vekw"]
-albedo_color = Color(1, 0, 0, 1)
-emission_enabled = true
-emission = Color(1, 0, 0, 1)
-emission_energy_multiplier = 10.0
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_8uyut"]
-material = SubResource("StandardMaterial3D_0vekw")
-top_radius = 0.01
-bottom_radius = 0.01
-height = 30.0
-
 [node name="Blaster" type="Node3D"]
 script = ExtResource("1_c3vu4")
 
 [node name="blasterE2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.8, 1.6, -0.8)
 mesh = SubResource("ArrayMesh_ytukn")
 skeleton = NodePath("")
 
 [node name="Muzzle" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.8, 1.6, -0.8)
 visible = false
 
 [node name="Muzzleflash" type="MeshInstance3D" parent="Muzzle"]
@@ -185,11 +176,12 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Aim" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0367045, 0.701473)
-target_position = Vector3(2.08165e-12, 2.08165e-12, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, -0.85)
+target_position = Vector3(2.08165e-12, 2.08165e-12, -30)
 
-[node name="Laser" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.08165e-12, 2.08165e-12, 16)
-mesh = SubResource("CylinderMesh_8uyut")
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 2.08165e-12, 2, -0.8)
+modulate = Color(1, 1, 1, 0.372549)
+texture = ExtResource("4_noau5")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
