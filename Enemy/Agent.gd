@@ -29,17 +29,19 @@ func _on_area_3d_body_entered(body):
 	if not dying:
 		attacking = true
 		$AnimationPlayer.play("Attack")
-		$Timer.start()
+		#$Timer.start()
 
 
 func _on_area_3d_body_exited(body):
 	if not dying:
 		attacking = false
 		$AnimationPlayer.play("Walk")
-		$Timer.stop()
+		#$Timer.stop()
 
 func damage():
 	dying = true
 	$AnimationPlayer.play("Death")
+	Global.update_score(5)
 	velocity = Vector3.ZERO
-	$Root.hide()
+	#$Root.hide()
+	queue_free()
